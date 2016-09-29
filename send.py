@@ -5,10 +5,17 @@ from __future__ import unicode_literals
 from twilio.rest import TwilioRestClient
 import logging
 import json
+import requests
 
 logger = logging.getLogger(__name__)
 
-MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Venmo me @justinsims. Thanks!"""
+MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Pay with the link below, thanks!
+
+{2}"""
+
+VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=friends&recipients=justinsims&amount={0}&note=Rent"
+
+GOOGLE_SHORTENER = "https://www.googleapis.com/urlshortener/v1/url?key={0}"
 
 NOT_CONFIGURED_MESSAGE = """Cannot initialize Twilio notification
 middleware. Required enviroment variables TWILIO_ACCOUNT_SID, or
@@ -49,7 +56,7 @@ class MessageClient(object):
 
     def send_message(self, body, to):
         self.twilio_client.messages.create(body=body, to=to,
-                                           from_=self.twilio_number,
+                                           from_=self.twilio_number
                                            # media_url=['https://demo.twilio.com/owl.png'])
                                            )
 def notify_everyone():
@@ -60,7 +67,10 @@ def notify_everyone():
 
     for person in renters:
         print("notifying {0}...".format(person['name']))
-        message_to_send = MESSAGE.format(person['name'], person['amount'])
+        message_to_send = MESSAGE.format(person['name'], person['amount'], VENMO_DEEPLINK.format(person['amount']))
+        #params = json.dumps({'longUrl': url_to_shorten})
+        #response = requests.post(post_url, params, headers={'Content-Type': 'application/json'})
+
         client.send_message(message_to_send, person['phone_number'])
 
     print("notifications complete!")
