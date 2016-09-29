@@ -10,7 +10,7 @@ MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this 
 
 NOT_CONFIGURED_MESSAGE = """Cannot initialize Twilio notification
 middleware. Required enviroment variables TWILIO_ACCOUNT_SID, or
-TWILIO_AUTH_TOKEN or TWILIO_NUMBER missing"""
+TWILIO_AUTH_TOKEN or TWILIO_NUMBER missing. Don't forget to bring the private directory over!"""
 
 
 def load_renters_file():
