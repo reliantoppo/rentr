@@ -14,13 +14,15 @@ TWILIO_AUTH_TOKEN or TWILIO_NUMBER missing"""
 
 
 def load_renters_file():
-    with open('../config/renters.json') as rentersFile:
+    with open('config/renters.json') as rentersFile:
         renters = json.load(rentersFile)
+        if not(renters):
+            raise Exception('Cannot read renters json file!')
         return renters
 
 
 def load_twilio_config():
-    with open('../config/private/twilio.json') as twilioFile:
+    with open('config/private/twilio.json') as twilioFile:
         config = json.load(twilioFile);
 
         twilio_account_sid = config['TWILIO_ACCOUNT_SID']
@@ -29,7 +31,7 @@ def load_twilio_config():
 
         if not all([twilio_account_sid, twilio_auth_token, twilio_number]):
             logger.error(NOT_CONFIGURED_MESSAGE)
-            raise Exception('not configured')
+            raise Exception(NOT_CONFIGURED_MESSAGE)
 
         return (twilio_number, twilio_account_sid, twilio_auth_token)
 
@@ -48,17 +50,19 @@ class MessageClient(object):
                                            from_=self.twilio_number,
                                            # media_url=['https://demo.twilio.com/owl.png'])
                                            )
-def do_thing():
+def notify_everyone():
+    print("notify_everyone(): running..")
 
     renters = load_renters_file()
     client = MessageClient()
 
     for person in renters:
+        print("notifying {0}...".format(person['name']))
         message_to_send = MESSAGE.format(person['name'], person['amount'])
         client.send_message(message_to_send, person['phone_number'])
 
-    logger.info('Administrators notified')
+    print("notifications complete!")
 
     return None
 
-do_thing();
+notify_everyone();

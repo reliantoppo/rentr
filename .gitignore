@@ -1,1 +1,3 @@
-Config/private/*
+config/private/*
+venv/*
+.idea
