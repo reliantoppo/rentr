@@ -6,7 +6,7 @@ import json
 
 logger = logging.getLogger(__name__)
 
-MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Thanks!"""
+MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Venmo me @justinsims. Thanks!"""
 
 NOT_CONFIGURED_MESSAGE = """Cannot initialize Twilio notification
 middleware. Required enviroment variables TWILIO_ACCOUNT_SID, or
