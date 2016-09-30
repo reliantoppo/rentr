@@ -81,7 +81,7 @@ def notify():
         #params = json.dumps({'longUrl': url_to_shorten})
         #response = requests.post(post_url, params, headers={'Content-Type': 'application/json'})
 
-       client.send_message(message_to_send, person['phone_number'])
+        client.send_message(message_to_send, person['phone_number'])
 
     print("notifications complete!")
 
