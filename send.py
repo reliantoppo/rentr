@@ -23,7 +23,7 @@ middleware. Required enviroment variables TWILIO_ACCOUNT_SID, or
 TWILIO_AUTH_TOKEN or TWILIO_NUMBER missing. Don't forget to bring the private directory over!"""
 
 def load_json_config():
-    with open('config/private/config.json') as configFile:
+    with open('config/config.json') as configFile:
         global config
         config = json.load(configFile)
         if not(config):
