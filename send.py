@@ -11,7 +11,9 @@ logger = logging.getLogger(__name__)
 
 MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Pay with the link below, thanks!
 
-{2}"""
+{2}
+
+See rent statuses here: https://rent-5397f.firebaseapp.com"""
 
 VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=friends&recipients=justinsims&amount={0}&note=Rent"
 
