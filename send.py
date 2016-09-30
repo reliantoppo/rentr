@@ -14,7 +14,7 @@ MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this 
 
 {2}"""
 
-VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=friends&recipients={0}&amount={1}&note={2}%20{3}%20Rent"
+VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=private&recipients={0}&amount={1}&note={2}%20{3}%20Rent"
 
 GOOGLE_SHORTENER = "https://www.googleapis.com/urlshortener/v1/url?key={0}"
 
