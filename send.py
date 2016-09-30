@@ -3,18 +3,18 @@
 from __future__ import unicode_literals
 
 from twilio.rest import TwilioRestClient
-import logging
 import json
+import calendar
+import datetime
 import requests
 
-logger = logging.getLogger(__name__)
 config = None
 
 MESSAGE = """Hey {0}! It's that time again, time to pay rent. You owe ${1} this month. Pay with the link below, thanks!
 
 {2}"""
 
-VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=friends&recipients=justinsims&amount={0}&note=Rent"
+VENMO_DEEPLINK = "venmo://paycharge?txn=pay&audience=friends&recipients={0}&amount={1}&note={2}%20{3}%20Rent"
 
 GOOGLE_SHORTENER = "https://www.googleapis.com/urlshortener/v1/url?key={0}"
 
@@ -44,7 +44,6 @@ def twilio_config():
     twilio_number = twilio['TWILIO_NUMBER']
 
     if not all([twilio_account_sid, twilio_auth_token, twilio_number]):
-        logger.error(NOT_CONFIGURED_MESSAGE)
         raise Exception(NOT_CONFIGURED_MESSAGE)
 
     return (twilio_number, twilio_account_sid, twilio_auth_token)
@@ -69,13 +68,16 @@ class MessageClient(object):
 def notify():
     print("notify(): running..")
     load_json_config()
-
     renters = get_renters()
     client = MessageClient()
 
+    now = datetime.datetime.now()
+    month = calendar.month_name[now.month]
+
     for person in renters:
         print("notifying {0}...".format(person['name']))
-        message_to_send = MESSAGE.format(person['name'], person['amount'], VENMO_DEEPLINK.format(person['amount']))
+        venmo_link = VENMO_DEEPLINK.format(config['recipient'], person['amount'], month, now.year)
+        message_to_send = MESSAGE.format(person['name'], person['amount'], venmo_link)
         #params = json.dumps({'longUrl': url_to_shorten})
         #response = requests.post(post_url, params, headers={'Content-Type': 'application/json'})
 
