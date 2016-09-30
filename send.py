@@ -75,13 +75,13 @@ def notify():
     month = calendar.month_name[now.month]
 
     for person in renters:
-        print("notifying {0}...".format(person['name']))
+        print("notifying {0} for ${1}".format(person['name'], person['amount']))
         venmo_link = VENMO_DEEPLINK.format(config['recipient'], person['amount'], month, now.year)
         message_to_send = MESSAGE.format(person['name'], person['amount'], venmo_link)
         #params = json.dumps({'longUrl': url_to_shorten})
         #response = requests.post(post_url, params, headers={'Content-Type': 'application/json'})
 
-        client.send_message(message_to_send, person['phone_number'])
+       client.send_message(message_to_send, person['phone_number'])
 
     print("notifications complete!")
 
