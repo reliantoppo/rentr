@@ -59,7 +59,10 @@ def notify():
         venmo_link = VENMO_DEEPLINK.format(config['recipient'], person['amount'], month, now.year)
 
         message_to_send = MESSAGE.format(person['name'], person['amount'], venmo_link)
-        client.send_message(person['phone'], message_to_send)
+        try:
+            client.send_message(person['phone'], message_to_send)
+        except Exception, e:
+            client.send_message('justin.simonelli@gmail.com', str(e))
 
     client.close_server()
 
