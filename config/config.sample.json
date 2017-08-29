@@ -1,5 +1,6 @@
 {
 	"recipient": "##YOUR VENMO NAME HERE",
+	"admin_email": "##ADMIN EMAIL ADDRESS HERE",
 	"gmail":{
 		"email" : "##YOUR GMAIL EMAIL HERE",
 		"password" : "##YOUR GMAIL PASSWORD HERE"
