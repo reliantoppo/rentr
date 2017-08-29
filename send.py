@@ -21,7 +21,7 @@ STATUS_MESSAGE = "Here are the notification statues for {0} {1}<br/>{2}"
 
 STATUS_LINE_ITEM = "<p {0}><strong>{1} - ${2}</strong></p>"
 
-VENMO_DEEPLINK = "venmo://paycharge?txn=pay&recipients={0}&amount={1}&note={2}%20{3}%20Rent%20&Internet"
+VENMO_DEEPLINK = "venmo://paycharge?txn=pay&recipients={0}&amount={1}&note={2}%20{3}%20Rent%20and%20Internet"
 
 
 class MessageClient(object):
