@@ -1,0 +1,13 @@
+{
+        "recipient": "justinsims",
+        "admin_email": "justin.simonelli@gmail.com",
+        "gmail":{
+                "email" : "rentr.app.messaging@gmail.com",
+                "password" : "7fncTMd7HCMhXoTZtFyqZKsqq"
+        },
+        "renters": [{
+                "name": "Sims",
+                "phone": "2164704590@vtext.com",
+                "amount": "1000"
+        }]
+}
