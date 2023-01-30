@@ -1,0 +1,13 @@
+{
+        "recipient": "justinsims",
+        "admin_email": "justin.simonelli@gmail.com",
+        "gmail":{
+                "email" : "<PROJECT_EMAIL>",
+                "password" : "<PROJECT_EMAIL_PASS>"
+        },
+        "renters": [{
+                "name": "Sims",
+                "phone": "<REDACTED>@vtext.com",
+                "amount": "1000"
+        }]
+}

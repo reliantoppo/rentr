@@ -1,13 +1,13 @@
 {
 	"recipient": "##YOUR VENMO NAME HERE",
+	"admin_email": "##ADMIN EMAIL ADDRESS HERE",
+	"gmail":{
+		"email" : "##YOUR GMAIL EMAIL HERE",
+		"password" : "##YOUR GMAIL PASSWORD HERE"
+	},
 	"renters": [{
 		"name": "Test Name",
-		"phone_number": "+12165551234",
-		"amount": "1"
-	}],
-	"twilio": {
-		"TWILIO_ACCOUNT_SID": "TWILIO_SID",
-		"TWILIO_AUTH_TOKEN": "TWILIO_AUTH_TOKEN",
-		"TWILIO_NUMBER": "TWILIO_NUMBER"
-	}
+		"phone": "2165551234@vtext.com",
+		"amount": "500"
+	}]
 }
